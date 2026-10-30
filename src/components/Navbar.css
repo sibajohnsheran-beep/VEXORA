@@ -1,0 +1,183 @@
+
+/* VEXORA — CINEMATIC GLASS NAVBAR */
+
+.vexora-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9000;
+  padding: 0 5%;
+  background: rgba(5, 13, 27, 0.08);
+  border-bottom: 1px solid transparent;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.vexora-navbar-scrolled {
+  background: rgba(5, 13, 27, 0.88);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-bottom-color: rgba(93, 192, 255, 0.13);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+.vexora-navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  width: 100%;
+  max-width: 1600px;
+  height: 82px;
+  margin: 0 auto;
+}
+
+.vexora-navbar-logo {
+  position: relative;
+  flex-shrink: 0;
+  color: #f3f8ff;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+}
+
+.vexora-navbar-logo > span:first-child {
+  color: #56caff;
+}
+
+.vexora-logo-glow {
+  position: absolute;
+  top: -5px;
+  left: 41px;
+  width: 28px;
+  height: 28px;
+  background: rgba(44, 180, 255, 0.38);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.vexora-navbar-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 1.6vw, 28px);
+}
+
+.vexora-navbar-links a {
+  color: #c6d3e6;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.vexora-navbar-links a:hover {
+  color: #56caff;
+}
+
+.vexora-navbar-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-shrink: 0;
+  padding: 12px 17px;
+  border: 1px solid #249fe1;
+  border-radius: 7px;
+  background: rgba(0, 134, 224, 0.08);
+  color: #e8f7ff;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.vexora-navbar-cta:hover {
+  background: rgba(0, 134, 224, 0.2);
+  box-shadow: 0 0 24px rgba(0, 153, 255, 0.17);
+}
+
+.vexora-navbar-menu-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(86, 202, 255, 0.35);
+  border-radius: 8px;
+  background: rgba(8, 25, 45, 0.75);
+  color: #e8f7ff;
+  cursor: pointer;
+}
+
+@media (max-width: 1150px) {
+  .vexora-navbar-inner {
+    height: 72px;
+  }
+
+  .vexora-navbar-menu-button {
+    display: flex;
+  }
+
+  .vexora-navbar-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px 5% 24px;
+    background: rgba(5, 13, 27, 0.97);
+    border-bottom: 1px solid rgba(86, 202, 255, 0.2);
+    backdrop-filter: blur(24px);
+  }
+
+  .vexora-navbar-links-open {
+    display: flex;
+  }
+
+  .vexora-navbar-links a {
+    padding: 15px 12px;
+    font-size: 14px;
+  }
+
+  .vexora-navbar-cta {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .vexora-navbar {
+    padding: 0 4%;
+  }
+
+  .vexora-navbar-logo {
+    font-size: 22px;
+  }
+
+  .vexora-navbar-cta {
+    padding: 10px;
+    font-size: 11px;
+  }
+
+  .vexora-navbar-cta svg {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vexora-navbar,
+  .vexora-navbar-links a,
+  .vexora-navbar-cta {
+    transition: none;
+  }
+}

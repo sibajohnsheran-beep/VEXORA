@@ -1,0 +1,1029 @@
+
+/* ==========================================
+   VEXORA — CLEAN SERVICES SECTION
+========================================== */
+
+.vexora-services-section {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #030d1b;
+  color: #ffffff;
+  scroll-margin-top: 85px;
+}
+
+.vexora-services-showcase {
+  display: grid;
+  grid-template-columns: 52% minmax(0, 48%);
+  width: 100%;
+  min-height: 760px;
+}
+
+/* ==========================================
+   LEFT — SECURITY CONTROL ROOM
+========================================== */
+
+.vexora-services-control {
+  position: relative;
+  min-height: 760px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #071427;
+}
+
+.vexora-services-control-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background-image: url('/images/services/control-room.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter:
+    brightness(0.89)
+    contrast(1.05)
+    saturate(0.91);
+
+  transform-origin: center;
+
+  animation: vexora-control-breathe 28s
+    ease-in-out infinite alternate;
+}
+
+@keyframes vexora-control-breathe {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.018);
+  }
+}
+
+.vexora-services-control-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    rgba(2, 10, 23, 0.79) 0%,
+    rgba(2, 10, 23, 0.58) 25%,
+    rgba(2, 10, 23, 0.13) 56%,
+    rgba(2, 10, 23, 0.14) 100%
+  );
+}
+
+/* ==========================================
+   SERVICES HEADING
+========================================== */
+
+.vexora-services-heading {
+  position: relative;
+  z-index: 3;
+  width: min(100%, 710px);
+  max-width: none;
+  margin: 0;
+  padding: 40px 7% 28px 10%;
+  text-align: left;
+}
+
+.vexora-services-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin: 0 0 18px;
+
+  color: #b9d0e8;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.vexora-services-blue-dot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+
+  border-radius: 50%;
+  background: #1bcaff;
+  box-shadow: 0 0 12px #1bcaff;
+}
+
+.vexora-services-eyebrow-line {
+  width: 100px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #1bcaff,
+    transparent
+  );
+}
+
+.vexora-services-heading h2 {
+  margin: 0 0 18px;
+
+  color: #ffffff;
+  font-size: clamp(32px, 3.1vw, 56px);
+  font-weight: 850;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  text-wrap: balance;
+
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.48);
+}
+
+.vexora-services-heading h2 span {
+  color: #27c8ff;
+}
+
+.vexora-services-intro {
+  max-width: 510px;
+  margin: 0;
+
+  color: #e3edfa;
+  font-size: clamp(13px, 1vw, 16px);
+  line-height: 1.65;
+
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+}
+
+/* Hide unnecessary duplicate overlays */
+
+.vexora-services-control-footer,
+.vexora-services-live,
+.vexora-cctv-effects,
+.vexora-coverage-label,
+.vexora-building-status,
+.vexora-camera-marker,
+.vexora-building-features {
+  display: none !important;
+}
+
+/* ==========================================
+   RIGHT — SMART BUILDING
+========================================== */
+
+.vexora-services-right {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: #030d1b;
+}
+
+.vexora-services-building {
+  position: relative;
+  height: 405px;
+  overflow: hidden;
+  background: #030d1b;
+}
+
+.vexora-services-building-image {
+  position: absolute;
+  inset: 0;
+
+  background-image: url('/images/services/smart-building.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter:
+    brightness(1.02)
+    contrast(1.04)
+    saturate(0.92);
+
+  transform-origin: center;
+
+  animation: vexora-building-breathe 28s
+    ease-in-out infinite alternate;
+}
+
+@keyframes vexora-building-breathe {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.01);
+  }
+}
+
+.vexora-services-building-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    transparent 75%,
+    #030d1b 100%
+  );
+}
+
+/* ==========================================
+   FOUR SERVICE CARDS
+========================================== */
+
+.vexora-services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  flex: 1;
+  align-items: stretch;
+  gap: 10px;
+  padding: 12px 15px 30px;
+}
+
+.vexora-service-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 315px;
+  padding: 18px 13px;
+
+  border: 1px solid rgba(0, 153, 255, 0.4);
+  border-radius: 15px;
+
+  background: linear-gradient(
+    155deg,
+    rgba(11, 47, 87, 0.9),
+    rgba(3, 17, 37, 0.98)
+  );
+
+  box-shadow: inset 0 1px 15px rgba(0, 150, 255, 0.05);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.vexora-service-card:hover {
+  transform: translateY(-5px);
+  border-color: #32caff;
+  box-shadow: 0 12px 35px rgba(0, 130, 255, 0.16);
+}
+
+.vexora-service-card-top {
+  display: flex;
+  justify-content: space-between;
+
+  color: #8eb9d9;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.vexora-service-icon {
+  display: grid;
+  place-items: center;
+
+  width: 48px;
+  height: 48px;
+  margin-top: 22px;
+
+  border: 1px solid rgba(0, 190, 255, 0.5);
+  border-radius: 10px;
+
+  background: rgba(0, 110, 205, 0.15);
+  color: #25caff;
+}
+
+.vexora-service-card h3 {
+  margin: 17px 0 10px;
+
+  color: #ffffff;
+  font-size: clamp(12px, 1vw, 16px);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.vexora-service-card h3 span {
+  display: block;
+}
+
+.vexora-service-card p {
+  margin: 0 0 15px;
+
+  color: #a8bfd7;
+  font-size: clamp(10px, 0.72vw, 12px);
+  line-height: 1.65;
+}
+
+/* ==========================================
+   LEARN MORE BUTTON
+========================================== */
+
+.vexora-service-learn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+
+  width: 100%;
+  min-height: 44px;
+  margin-top: auto;
+  padding: 12px 0 0;
+
+  border: 0;
+  border-top: 1px solid rgba(60, 150, 230, 0.2);
+
+  background: transparent;
+  color: #e8f4ff;
+
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.vexora-service-arrow {
+  display: grid;
+  place-items: center;
+
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+
+  border: 1px solid rgba(0, 170, 255, 0.5);
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #0064bf,
+    #009cff
+  );
+
+  box-shadow: 0 0 15px rgba(0, 140, 255, 0.25);
+
+  transition: transform 0.3s ease;
+}
+
+.vexora-service-learn:hover .vexora-service-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* ==========================================
+   SERVICE DETAILS POPUP
+========================================== */
+
+.vexora-service-modal-backdrop {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+  padding: 20px;
+
+  background: rgba(0, 5, 15, 0.85);
+  backdrop-filter: blur(12px);
+}
+
+.vexora-service-modal {
+  position: relative;
+
+  width: min(100%, 520px);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 35px;
+
+  border: 1px solid rgba(36, 195, 255, 0.4);
+  border-radius: 20px;
+
+  background: linear-gradient(
+    145deg,
+    #102e50,
+    #061426
+  );
+
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.5);
+}
+
+.vexora-service-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+
+  display: grid;
+  place-items: center;
+
+  width: 35px;
+  height: 35px;
+
+  border: 1px solid rgba(100, 190, 255, 0.3);
+  border-radius: 50%;
+
+  background: rgba(0, 50, 100, 0.4);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.vexora-service-modal h2 {
+  margin: 20px 0;
+  font-size: 30px;
+}
+
+.vexora-service-modal h2 span {
+  color: #27c8ff;
+}
+
+.vexora-service-modal > p:not(.vexora-services-eyebrow) {
+  color: #adc3d9;
+  line-height: 1.8;
+}
+
+.vexora-service-modal-features {
+  display: grid;
+  gap: 16px;
+  margin: 28px 0;
+}
+
+.vexora-service-modal-features > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #d9eafa;
+  font-size: 14px;
+}
+
+.vexora-service-modal-features svg {
+  flex-shrink: 0;
+  color: #27c8ff;
+}
+
+.vexora-service-enquire {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 100%;
+  padding: 15px;
+
+  border: 1px solid #27c8ff;
+  border-radius: 9px;
+
+  background: #0786cc;
+  color: #ffffff;
+
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.vexora-service-enquire:hover {
+  background: #0ca7ed;
+}
+
+/* ==========================================
+   TABLET RESPONSIVE
+========================================== */
+
+@media (max-width: 1250px) {
+  .vexora-services-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .vexora-services-control {
+    min-height: 620px;
+  }
+
+  .vexora-services-heading {
+    padding: 35px 7% 30px;
+  }
+
+  .vexora-services-building {
+    height: 430px;
+  }
+
+  .vexora-services-grid {
+    padding: 18px 5% 45px;
+    gap: 14px;
+  }
+
+  .vexora-service-card {
+    min-height: 275px;
+    padding: 18px;
+  }
+
+  .vexora-service-card h3 {
+    font-size: 15px;
+  }
+
+  .vexora-service-card p {
+    font-size: 12px;
+  }
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
+
+@media (max-width: 700px) {
+  .vexora-services-control {
+    min-height: 540px;
+  }
+
+  .vexora-services-control-image {
+    background-position: 53% center;
+  }
+
+  .vexora-services-heading {
+    padding: 32px 6% 24px;
+  }
+
+  .vexora-services-heading h2 {
+    font-size: clamp(30px, 7.5vw, 42px);
+  }
+
+  .vexora-services-building {
+    height: 320px;
+  }
+
+  .vexora-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 15px 5% 40px;
+  }
+
+  .vexora-service-card {
+    min-height: 270px;
+    padding: 14px;
+  }
+
+  .vexora-service-card h3 {
+    font-size: 14px;
+  }
+
+  .vexora-service-card p {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 400px) {
+  .vexora-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vexora-service-card {
+    min-height: 215px;
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .vexora-services-control-image,
+  .vexora-services-building-image {
+    animation: none;
+    transform: none;
+  }
+
+  .vexora-service-card:hover,
+  .vexora-service-learn:hover .vexora-service-arrow {
+    transform: none;
+  }
+}
+
+
+/* ==========================================
+   VEXORA — SMART BUILDING CCTV ANIMATION
+========================================== */
+
+.vexora-smart-effects {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Soft moving surveillance scan */
+.vexora-smart-scan {
+  position: absolute;
+  left: 8%;
+  top: 15%;
+  width: 84%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(40, 195, 255, 0.35),
+    transparent
+  );
+
+  box-shadow:
+    0 0 12px rgba(0, 170, 255, 0.2);
+
+  animation: vexora-smart-scan-move
+    12s linear infinite;
+}
+
+@keyframes vexora-smart-scan-move {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.5;
+  }
+
+  85% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(260px);
+    opacity: 0;
+  }
+}
+
+/* CCTV coverage points */
+.vexora-smart-pulse {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  border: 1px solid rgba(40, 200, 255, 0.85);
+  background: rgba(40, 200, 255, 0.18);
+
+  box-shadow:
+    0 0 12px rgba(40, 200, 255, 0.35);
+
+  animation: vexora-smart-pulse-wave
+    4s ease-out infinite;
+}
+
+.pulse-one {
+  top: 28%;
+  left: 33%;
+}
+
+.pulse-two {
+  top: 47%;
+  left: 72%;
+  animation-delay: 1.3s;
+}
+
+.pulse-three {
+  top: 70%;
+  left: 48%;
+  animation-delay: 2.6s;
+}
+
+@keyframes vexora-smart-pulse-wave {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.85;
+  }
+
+  100% {
+    transform: scale(4.5);
+    opacity: 0;
+  }
+}
+
+/* Subtle moving blue illumination */
+.vexora-smart-glow {
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    ellipse at 45% 50%,
+    rgba(0, 140, 255, 0.07),
+    transparent 60%
+  );
+
+  animation: vexora-smart-glow-shift
+    14s ease-in-out infinite alternate;
+}
+
+@keyframes vexora-smart-glow-shift {
+  from {
+    transform: translateX(-5%);
+    opacity: 0.45;
+  }
+
+  to {
+    transform: translateX(5%);
+    opacity: 0.85;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .vexora-smart-scan,
+  .vexora-smart-pulse,
+  .vexora-smart-glow {
+    animation: none;
+  }
+
+  .vexora-smart-scan,
+  .vexora-smart-pulse {
+    opacity: 0;
+  }
+}
+
+
+/* ==========================================
+   VEXORA — SIX LIVE CCTV VIDEO MONITORS
+========================================== */
+
+/*
+  Match the original control-room image:
+  1494px wide × 1023px high.
+
+  The stage scales exactly like background-size: cover.
+  Container query units keep video positions attached
+  to the original image, even when it is cropped.
+*/
+
+.vexora-services-control {
+  container-type: size;
+  isolation: isolate;
+}
+
+/* Hide old CSS background to avoid duplicate images */
+.vexora-services-control-image {
+  display: none;
+}
+
+.vexora-control-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -2;
+
+  width: max(100cqw, 146.04cqh);
+  aspect-ratio: 1494 / 1023;
+
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Original control-room image */
+.vexora-control-stage-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+
+  filter:
+    brightness(0.89)
+    contrast(1.05)
+    saturate(0.91);
+}
+
+/* Videos share the same image coordinate system */
+.vexora-control-video-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Each monitor uses percentages of the original image */
+.vexora-monitor-video {
+  position: absolute;
+  overflow: hidden;
+  background: transparent;
+
+  border-radius: 2px;
+
+  opacity: 0.94;
+
+  box-shadow:
+    inset 0 0 12px rgba(0, 0, 0, 0.25);
+}
+
+.vexora-monitor-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================
+   TOP ROW — CAM 01, CAM 02, CAM 03
+========================================== */
+
+/* CAM 01 — Parking Area */
+.vexora-monitor-01 {
+  left: 24.4%;
+  top: 10.3%;
+  width: 21.9%;
+  height: 15.3%;
+}
+
+/* CAM 02 — Office Lobby */
+.vexora-monitor-02 {
+  left: 49.0%;
+  top: 10.2%;
+  width: 22.0%;
+  height: 15.4%;
+}
+
+/* CAM 03 — Warehouse */
+.vexora-monitor-03 {
+  left: 74.1%;
+  top: 8.2%;
+  width: 23.5%;
+  height: 15.7%;
+}
+
+/* ==========================================
+   BOTTOM ROW — CAM 04, CAM 05, CAM 06
+========================================== */
+
+/* CAM 04 — Corridor */
+.vexora-monitor-04 {
+  left: 24.5%;
+  top: 29.6%;
+  width: 21.9%;
+  height: 15.2%;
+}
+
+/* CAM 05 — Parking Garage */
+.vexora-monitor-05 {
+  left: 49.0%;
+  top: 29.7%;
+  width: 22.0%;
+  height: 15.3%;
+}
+
+/* CAM 06 — Outdoor Road */
+.vexora-monitor-06 {
+  left: 74.1%;
+  top: 29.5%;
+  width: 23.5%;
+  height: 15.5%;
+}
+
+/* Slight screen tint to blend footage */
+.vexora-monitor-video::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    rgba(0, 45, 85, 0.10),
+    transparent 55%,
+    rgba(0, 15, 35, 0.12)
+  );
+}
+
+/* Keep heading and dark gradient above videos */
+.vexora-services-control-shade {
+  z-index: 2;
+}
+
+.vexora-services-heading {
+  z-index: 3;
+}
+
+/* Mobile: prevent excessive video rendering */
+@media (max-width: 700px) {
+  .vexora-monitor-video {
+    border-radius: 1px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .vexora-control-stage {
+    animation: none;
+  }
+}
+
+
+/* ==========================================
+   VEXORA — REALISTIC CCTV SCREEN BLENDING
+   Add at the END of ServicesSection.css
+========================================== */
+
+/* Original control room remains unchanged */
+.vexora-control-stage {
+  isolation: isolate;
+}
+
+/* Make footage sit inside the monitor screens */
+.vexora-monitor-video {
+  border-radius: 3px;
+  opacity: 1;
+  background: #06101b;
+  overflow: hidden;
+
+  /* Reduce visible edges */
+  clip-path: inset(4% 2.5% 7% 2.5% round 2px);
+
+  box-shadow:
+    inset 0 0 18px rgba(0, 0, 0, 0.65),
+    inset 0 0 5px rgba(30, 130, 200, 0.12);
+}
+
+/* Darker, cooler CCTV footage */
+.vexora-monitor-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  filter:
+    brightness(0.65)
+    contrast(1.14)
+    saturate(0.66)
+    sepia(0.08)
+    hue-rotate(170deg);
+
+  transform: scale(1.015);
+  transform-origin: center;
+}
+
+/* Screen reflections and subtle blue tint */
+.vexora-monitor-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      155deg,
+      rgba(120, 205, 255, 0.13) 0%,
+      transparent 28%,
+      rgba(0, 10, 28, 0.2) 75%,
+      rgba(0, 5, 18, 0.4) 100%
+    );
+
+  box-shadow:
+    inset 0 0 18px rgba(0, 0, 0, 0.55);
+}
+
+/* Soft integration with original photograph */
+.vexora-control-video-layer {
+  mix-blend-mode: normal;
+}
+
+/* Keep heading above footage */
+.vexora-services-control-shade {
+  z-index: 2;
+  pointer-events: none;
+}
+
+.vexora-services-heading {
+  z-index: 3;
+}
+
+/* Keep the full control-room image centered */
+
+.vexora-control-stage {
+  top: 50%;
+  left: 50%;
+
+  width: max(100cqw, 146.04cqh);
+  aspect-ratio: 1494 / 1023;
+
+  transform: translate(-50%, -50%);
+}
+
+/* Restore original static CCTV control room */
+
+.vexora-services-control {
+  container-type: normal;
+}
+
+.vexora-services-control-image {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background-image: url('/images/services/control-room.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.vexora-control-stage,
+.vexora-control-video-layer,
+.vexora-monitor-video {
+  display: none;
+}

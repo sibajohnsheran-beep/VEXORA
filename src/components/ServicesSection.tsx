@@ -104,8 +104,8 @@ const CAMERAS = [
 ]
 
 type Service = (typeof SERVICES)[number]
+export function ControlRoomVideos() {
 
-function ControlRoomVideos() {
   return (
     <div
       className="vexora-control-stage"

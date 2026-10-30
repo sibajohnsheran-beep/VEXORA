@@ -1,6 +1,3 @@
-
-import * as THREE from 'three'
-
 export type ProductModelType =
   | 'bullet'
   | 'dome'

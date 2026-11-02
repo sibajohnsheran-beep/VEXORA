@@ -26,6 +26,10 @@ import type { ProductDetail } from './components/ProductDetailsModal'
 import Navbar from './components/Navbar'
 import ServicesSection from './components/ServicesSection'
 import SolutionsSection from './components/SolutionsSection'
+import TechnologySection from './components/TechnologySection'
+import AboutSection from './components/AboutSection'
+import ContactSection from './components/ContactSection'
+import Footer from './components/Footer'
 
 import './App.css'
 
@@ -598,14 +602,20 @@ function App() {
       {/* EXISTING SERVICES SECTION */}
       <ServicesSection />
 
-      {/* NEW SOLUTIONS SECTION */}
+      {/* EXISTING SOLUTIONS SECTION */}
       <SolutionsSection />
 
-      {/* EXISTING FOOTER */}
-      <footer className="site-footer">
-        <span>VEXORA © 2026</span>
-        <span>ENGINEERED FOR PROTECTION</span>
-      </footer>
+      {/* EXISTING TECHNOLOGY SECTION */}
+      <TechnologySection />
+
+      {/* EXISTING ABOUT US SECTION */}
+      <AboutSection />
+
+      {/* EXISTING WHATSAPP CONTACT SECTION */}
+      <ContactSection />
+
+      {/* NEW PREMIUM FOOTER */}
+      <Footer />
 
       {/* EXISTING PRODUCT DETAILS MODAL */}
       <ProductDetailsModal

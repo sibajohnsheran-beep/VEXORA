@@ -94,8 +94,10 @@ const PRODUCTS: ProductDetail[] = [
 
 function CinematicScene({
   story,
+  isMobile,
 }: {
   story: React.RefObject<StoryValues>
+  isMobile: boolean
 }) {
   const ptzRef = useRef<THREE.Group>(null)
   const buildingRef = useRef<THREE.Group>(null)
@@ -136,7 +138,7 @@ function CinematicScene({
       0.98
     )
 
-    // EXISTING PTZ CAMERA ANIMATION
+    // PTZ CAMERA ANIMATION
     if (ptzRef.current) {
       const group = ptzRef.current
 
@@ -208,7 +210,7 @@ function CinematicScene({
       )
     }
 
-    // EXISTING BUILDING ANIMATION
+    // BUILDING ANIMATION
     if (buildingRef.current) {
       const group = buildingRef.current
 
@@ -257,7 +259,7 @@ function CinematicScene({
       )
     }
 
-    // EXISTING CINEMATIC CAMERA VIEWPOINT
+    // CINEMATIC VIEWPOINT
     const buildingCameraX = THREE.MathUtils.lerp(
       3.5 - lensZoom * 2.8,
       2.5,
@@ -311,12 +313,12 @@ function CinematicScene({
 
     state.camera.lookAt(0, 0.2, 0)
 
-    // EXISTING LIGHTING
+    // MOBILE-FRIENDLY LIGHTING
     if (cameraLightRef.current) {
       cameraLightRef.current.intensity =
         THREE.MathUtils.damp(
           cameraLightRef.current.intensity,
-          (2 + reveal * 28) *
+          (2 + reveal * (isMobile ? 12 : 28)) *
             (1 - cameraExit + finalScene * 0.8),
           5,
           delta
@@ -327,7 +329,7 @@ function CinematicScene({
       buildingLightRef.current.intensity =
         THREE.MathUtils.damp(
           buildingLightRef.current.intensity,
-          buildingReveal * 50,
+          buildingReveal * (isMobile ? 18 : 50),
           5,
           delta
         )
@@ -336,7 +338,7 @@ function CinematicScene({
 
   return (
     <>
-      <ambientLight intensity={0.3} />
+      <ambientLight intensity={isMobile ? 0.7 : 0.3} />
 
       <spotLight
         ref={cameraLightRef}
@@ -349,7 +351,7 @@ function CinematicScene({
 
       <pointLight
         position={[-3, 1, 2]}
-        intensity={8}
+        intensity={isMobile ? 3 : 8}
         color="#2557c9"
       />
 
@@ -387,20 +389,47 @@ function App() {
   const [scene, setScene] =
     useState<SceneName>('camera')
 
-  // EXISTING PRODUCT DETAILS STATE
   const [selectedProduct, setSelectedProduct] =
     useState<ProductDetail | null>(null)
+
+  const [isMobile, setIsMobile] = useState(
+    () =>
+      typeof window !== 'undefined' &&
+      window.matchMedia('(max-width: 768px)').matches
+  )
 
   const closeProductDetails = useCallback(() => {
     setSelectedProduct(null)
   }, [])
 
-  // EXISTING CINEMATIC SCROLL ANIMATION
+  // DETECT MOBILE SCREEN
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(
+      '(max-width: 768px)'
+    )
+
+    const updateMobile = () => {
+      setIsMobile(mediaQuery.matches)
+    }
+
+    updateMobile()
+
+    mediaQuery.addEventListener('change', updateMobile)
+
+    return () => {
+      mediaQuery.removeEventListener(
+        'change',
+        updateMobile
+      )
+    }
+  }, [])
+
+  // CINEMATIC SCROLL ANIMATION
   useEffect(() => {
     const trigger = ScrollTrigger.create({
       trigger: storyRef.current,
       start: 'top top',
-      end: '+=5600',
+      end: () => `+=${window.innerWidth <= 768 ? 3200 : 5600}`,
       pin: true,
       scrub: true,
       invalidateOnRefresh: true,
@@ -422,15 +451,23 @@ function App() {
       },
     })
 
-    return () => trigger.kill()
+    const refresh = () => {
+      ScrollTrigger.refresh()
+    }
+
+    window.addEventListener('load', refresh)
+
+    return () => {
+      trigger.kill()
+      window.removeEventListener('load', refresh)
+    }
   }, [])
 
   return (
     <main className="vexora-app">
-      {/* EXISTING PREMIUM GLASS NAVBAR */}
       <Navbar />
 
-      {/* EXISTING CINEMATIC STORY */}
+      {/* CINEMATIC HOME */}
       <section
         id="home"
         ref={storyRef}
@@ -442,10 +479,11 @@ function App() {
               position: [3.5, 1.8, 5.5],
               fov: 42,
             }}
-            dpr={[1, 2]}
+            dpr={isMobile ? [1, 1.25] : [1, 2]}
             gl={{
-              antialias: true,
+              antialias: !isMobile,
               alpha: false,
+              powerPreference: 'default',
             }}
           >
             <color
@@ -454,13 +492,19 @@ function App() {
             />
 
             <Suspense fallback={null}>
-              <CinematicScene story={story} />
-              <Environment preset="city" />
+              <CinematicScene
+                story={story}
+                isMobile={isMobile}
+              />
+
+              {!isMobile && (
+                <Environment preset="city" />
+              )}
             </Suspense>
           </Canvas>
         </div>
 
-        {/* PTZ CAMERA HEADING */}
+        {/* CAMERA HEADING */}
         <div
           className={`story-copy ${
             scene !== 'camera' ? 'is-hidden' : ''
@@ -501,7 +545,7 @@ function App() {
           </p>
         </div>
 
-        {/* FINAL CINEMATIC HEADING */}
+        {/* FINAL HEADING */}
         <div
           className={`final-copy ${
             scene === 'final' ? 'is-visible' : ''
@@ -541,7 +585,7 @@ function App() {
         </div>
       </section>
 
-      {/* EXISTING 8 AUTOMATIC 3D PRODUCTS */}
+      {/* PRODUCTS */}
       <section
         id="products"
         className="products-section"
@@ -573,7 +617,6 @@ function App() {
                 <ShieldCheck size={18} />
               </div>
 
-              {/* EXISTING AUTOMATIC 360° 3D VIEWER */}
               <div className="product-3d-viewer">
                 <AutoRotateProductViewer
                   type={product.model}
@@ -587,7 +630,9 @@ function App() {
                 <button
                   type="button"
                   className="product-details-trigger"
-                  onClick={() => setSelectedProduct(product)}
+                  onClick={() =>
+                    setSelectedProduct(product)
+                  }
                   aria-label={`View details for ${product.name}`}
                 >
                   VIEW DETAILS
@@ -599,25 +644,13 @@ function App() {
         </div>
       </section>
 
-      {/* EXISTING SERVICES SECTION */}
       <ServicesSection />
-
-      {/* EXISTING SOLUTIONS SECTION */}
       <SolutionsSection />
-
-      {/* EXISTING TECHNOLOGY SECTION */}
       <TechnologySection />
-
-      {/* EXISTING ABOUT US SECTION */}
       <AboutSection />
-
-      {/* EXISTING WHATSAPP CONTACT SECTION */}
       <ContactSection />
-
-      {/* NEW PREMIUM FOOTER */}
       <Footer />
 
-      {/* EXISTING PRODUCT DETAILS MODAL */}
       <ProductDetailsModal
         product={selectedProduct}
         onClose={closeProductDetails}

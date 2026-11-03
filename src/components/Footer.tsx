@@ -5,6 +5,8 @@ import {
   ShieldCheck,
   MessageCircle,
   MapPin,
+  Phone,
+  Code2,
   ChevronUp,
 } from 'lucide-react'
 
@@ -137,6 +139,25 @@ export default function Footer() {
               WHATSAPP ENQUIRY
               <ArrowRight size={17} />
             </a>
+
+            {/* DEVELOPER DETAILS */}
+            <div className="footer-developer">
+              <div className="footer-developer-credit">
+                <Code2 size={19} />
+                <span>
+                  Developed by{' '}
+                  <strong>Neirah Tech</strong>
+                </span>
+              </div>
+
+              <a
+                href="tel:+94760041594"
+                className="footer-developer-phone"
+              >
+                <Phone size={17} />
+                <span>+94 760041594</span>
+              </a>
+            </div>
           </div>
         </div>
 

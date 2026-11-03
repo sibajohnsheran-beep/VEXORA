@@ -1056,3 +1056,32 @@ body,
   }
 }
 
+
+/* VEXORA — MOBILE 3D HOME OPTIMIZATION */
+
+@media (max-width: 768px) {
+  .story-section {
+    position: relative;
+    height: 100svh;
+    min-height: 570px;
+    overflow: hidden;
+  }
+
+  .story-canvas {
+    position: absolute;
+    inset: 32% 0 7%;
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    min-height: 250px;
+    z-index: 1;
+  }
+
+  .story-canvas canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    touch-action: pan-y;
+  }
+}
+
